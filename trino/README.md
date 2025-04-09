@@ -19,9 +19,9 @@ bigquery.credentials-file=<path-to-credentials.json>
     ├── catalog                     // каталог с источниками
     │   ├── bigquery.properties     // конфигурация источника bigquery (название файла может быть любым)
     │   └── credentials.json        // токен BigQuery (может быть в другом месте)
-    ├── config.properties           // [конфигурация сервера](https://trino.io/docs/current/installation/deployment.html#config-properties
-    ├── jvm.config                  // [конфигурация jvm для trino](https://trino.io/docs/current/installation/deployment.html#jvm-config
-    └── node.properties             // [конфигурация инстанса trino](https://trino.io/docs/current/installation/deployment.html#node-properties
+    ├── config.properties           // [конфигурация сервера](https://trino.io/docs/current/installation/deployment.html#config-properties)
+    ├── jvm.config                  // [конфигурация jvm для trino](https://trino.io/docs/current/installation/deployment.html#jvm-config)
+    └── node.properties             // [конфигурация инстанса trino](https://trino.io/docs/current/installation/deployment.html#node-properties)
 ```
 
 
