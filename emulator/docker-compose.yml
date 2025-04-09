@@ -1,0 +1,11 @@
+services:
+  bq-emulator:
+    container_name: bq-emulator
+    image: ghcr.io/goccy/bigquery-emulator:0.6.6
+    command: --project=testproject --database=testdatabase --dataset=testdataset --log-level=debug 
+    ports:
+      - 9050:9050
+      - 9060:9060
+# Optional volumes 
+#    volumes:
+#      - ./work:/work
