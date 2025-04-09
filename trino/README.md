@@ -13,17 +13,17 @@ bigquery.credentials-file=<path-to-credentials.json>
 Подробнее: https://trino.io/docs/current/connector/bigquery.html
 
 В этой папке приведёт минимальный пример содержимого всех необходимых файлов для запуска Trino с BigQuery в качестве источника
+
 ```
 ├── docker-compose.yml          
 ├── etc                             // volume для trino
     ├── catalog                     // каталог с источниками
     │   ├── bigquery.properties     // конфигурация источника bigquery (название файла может быть любым)
     │   └── credentials.json        // токен BigQuery (может быть в другом месте)
-    ├── config.properties           // [конфигурация сервера](https://trino.io/docs/current/installation/deployment.html#config-properties)
+    ├── config.properties           // <a href="https://trino.io/docs/current/installation/deployment.html#config-properties">конфигурация сервера</a>
     ├── jvm.config                  // [конфигурация jvm для trino](https://trino.io/docs/current/installation/deployment.html#jvm-config)
     └── node.properties             // [конфигурация инстанса trino](https://trino.io/docs/current/installation/deployment.html#node-properties)
 ```
-
 
 Эмулятор BigQuery к сожалению [пока что](https://github.com/trinodb/trino/issues/25539) не поддерживается в trino.
 
