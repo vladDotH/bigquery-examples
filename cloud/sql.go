@@ -60,14 +60,15 @@ func createSampleData(ctx context.Context, client *bigquery.Client) {
 		create table if not exists testdataset.testtable(
 			num int64,
 			str string,
-			arr Array<int64>
+			arr Array<int64>,
+			obj Struct<x int64, y string>
 		);
 
-		insert into testdataset.testtable(num, str, arr)
+		insert into testdataset.testtable(num, str, arr, obj)
 		values 
-			(1, '1 str', [1,2,3]), 
-			(2, '2nd str', []), 
-			(33, '3rd string', [0,0,0]);
+			(1, '1 str', [1,2,3], Struct(100, '100str')), 
+			(2, '2nd str', [], Struct<int64, string>(200, '200str')), 
+			(33, '3rd string', [0,0,0], Struct(300 as x, '300str' as y));
 	`)
 
 	job, err := query.Run(ctx)

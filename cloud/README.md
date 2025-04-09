@@ -16,7 +16,7 @@ Gcloud-cli также поставит BigQuery cli: `https://cloud.google.com/b
 через который можно обращаться к данным в проектах (он также работает с [эмулятором](../emulator/README.md)).
 
 ## Проект
-Проекты содержат в себе датасеты (в контексте базы данных - аналог схемы), которые в свою очередь содержат таблицы.
+Проекты содержат в себе **датасеты** (в контексте базы данных - аналог **схемы**), которые в свою очередь содержат **таблицы**.
 BigQuery может оперировать и другими сущностями, которые мы рассматривать не будем. 
 Подробнее: https://cloud.google.com/bigquery?#common-uses
 
@@ -60,8 +60,10 @@ gcloud projects add-iam-policy-binding <project-id> \
 gcloud iam service-accounts keys create <output-file>.json --iam-account=<service-account-email>
 ```
 
-## SQL API
-BigQuery поддерживает google-sql запросы через API и библиотеки
+## Обращение к данным
+
+### SQL 
+BigQuery поддерживает google-sql запросы через [cli](https://cloud.google.com/bigquery/docs/bq-command-line-tool) и библиотеки
 
 Библиотеки: https://cloud.google.com/bigquery/docs/reference/libraries
 
@@ -74,8 +76,9 @@ go run . --project=<project-id> [--kind=sql] [--credentialsFile=<credentials-fil
 
 По умолчанию `kind=sql`, `credentialsFile=credentials.json`.  Credentials file - токен с предыдущего шага. 
 
-## GRPC API
-BigQuery API поддерживает GRPC сервис для потокового чтения в форматах Apache Arrow и Avro
+### GRPC
+BigQuery API поддерживает [GRPC сервис](https://cloud.google.com/bigquery/docs/reference/storage/rpc) 
+для потокового чтения в форматах Apache Arrow и Avro
 
 API: https://cloud.google.com/bigquery/docs/reference/storage/
 

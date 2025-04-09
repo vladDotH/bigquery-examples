@@ -66,7 +66,7 @@ func grpcExample() {
 
 	// Read options (select specific field, and sql-like where clause)
 	tableReadOptions := &storagepb.ReadSession_TableReadOptions{
-		SelectedFields: []string{"num", "str", "arr"}, RowRestriction: "num > 1",
+		SelectedFields: []string{"num", "str", "arr", "obj"}, RowRestriction: "num > 1",
 	}
 
 	// Read session options (passing apache arrow fomat)
