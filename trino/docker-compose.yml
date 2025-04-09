@@ -1,0 +1,8 @@
+services:
+  trino:
+    container_name: trino
+    image: trinodb/trino:474
+    ports:
+      - 8080:8080
+    volumes:
+      - ./etc:/etc/trino
