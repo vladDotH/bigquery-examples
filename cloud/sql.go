@@ -24,6 +24,36 @@ func sqlExample() {
 	defer client.Close()
 
 	// Create dataset and table, and fill it
+	createSampleData(ctx, client)
+
+	log.Printf("Sample data created successfully, selecting...\n")
+
+	query := client.Query(`select * from testdataset.testtable where num > 1;`)
+
+	it, err := query.Read(ctx)
+	if err != nil {
+		log.Fatalf("Failed to execute query: %v", err)
+	}
+
+	// Read sample data as map
+	log.Printf("Total rows: %v, data:\n", it.TotalRows)
+	for {
+		var row map[string]bigquery.Value
+		err := it.Next(&row)
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			log.Fatalf("Error iterating through results: %v", err)
+		}
+		log.Printf("\t%v\n", row)
+	}
+
+	// Cleanup test table
+	clearSampleData(ctx, client)
+}
+
+func createSampleData(ctx context.Context, client *bigquery.Client) {
 	query := client.Query(`
 		create schema if not exists testdataset;
 
@@ -53,40 +83,17 @@ func sqlExample() {
 	if err = status.Err(); err != nil {
 		log.Fatalf("Errors during query execution: %v", err)
 	}
+}
 
-	log.Printf("Sample data created successfully, selecting...\n")
+func clearSampleData(ctx context.Context, client *bigquery.Client) {
+	query := client.Query(`drop table testdataset.testtable; drop schema testdataset;`)
 
-	query = client.Query(`select * from testdataset.testtable where num > 1;`)
-
-	it, err := query.Read(ctx)
+	job, err := query.Run(ctx)
 	if err != nil {
 		log.Fatalf("Failed to execute query: %v", err)
 	}
 
-	// Read sample data as map
-	log.Printf("Total rows: %v, data:\n", it.TotalRows)
-	for {
-		var row map[string]bigquery.Value
-		err := it.Next(&row)
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			log.Fatalf("Error iterating through results: %v", err)
-		}
-		log.Printf("\t%v\n", row)
-	}
-
-	// Cleanup test table
-
-	query = client.Query(`drop table testdataset.testtable; drop schema testdataset;`)
-
-	job, err = query.Run(ctx)
-	if err != nil {
-		log.Fatalf("Failed to execute query: %v", err)
-	}
-
-	status, err = job.Wait(ctx)
+	status, err := job.Wait(ctx)
 	if err != nil {
 		log.Fatalf("Failed to wait query: %v", err)
 	}

@@ -1,5 +1,8 @@
 # Работа с BigQuery в облаке
 
+## Перед началом
+Для части запросов к Google Cloud или их API понадобится доступ из страны, где они доступны (vpn).
+
 ## Начало работы
 Сначала google cloud попросит включить этот сервис и ввести нужные ему данные:
 https://cloud.google.com/bigquery/docs/sandbox?hl=en
@@ -39,7 +42,7 @@ BigQuery может оперировать и другими сущностям�
 
 ### Создание сервисного аккаунта и получение ключа в gcloud CLI
 Создать сервисный аккаунт 
-```
+```bash
 gcloud iam service-accounts create <unique-name>
 ```
 
@@ -57,3 +60,28 @@ gcloud projects add-iam-policy-binding <project-id> \
 gcloud iam service-accounts keys create <output-file>.json --iam-account=<service-account-email>
 ```
 
+## SQL API
+BigQuery поддерживает google-sql запросы через API и библиотеки
+
+Библиотеки: https://cloud.google.com/bigquery/docs/reference/libraries
+
+Справка google-SQL: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax
+
+Пример работы sql запросов находится в `sql.go` для запуска примера:
+```bash
+go run . --project=<project-id> [--kind=sql] [--credentialsFile=<credentials-file>] 
+```
+
+По умолчанию `kind=sql`, `credentialsFile=credentials.json`.  Credentials file - токен с предыдущего шага. 
+
+## GRPC API
+BigQuery API поддерживает GRPC сервис для потокового чтения в форматах Apache Arrow и Avro
+
+API: https://cloud.google.com/bigquery/docs/reference/storage/
+
+Библиотеки: https://cloud.google.com/bigquery/docs/reference/storage/libraries
+
+Пример работы sql запросов находится в `grpc.go` для запуска примера:
+```bash
+go run . --project=<project-id> --kind=grpc [--credentialsFile=<credentials-file>] 
+```
