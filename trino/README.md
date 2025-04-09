@@ -21,8 +21,8 @@ bigquery.credentials-file=<path-to-credentials.json>
     │   ├── bigquery.properties     // конфигурация источника bigquery (название файла может быть любым)
     │   └── credentials.json        // токен BigQuery (может быть в другом месте)
     ├── config.properties           // <a href="https://trino.io/docs/current/installation/deployment.html#config-properties">конфигурация сервера</a>
-    ├── jvm.config                  // [конфигурация jvm для trino](https://trino.io/docs/current/installation/deployment.html#jvm-config)
-    └── node.properties             // [конфигурация инстанса trino](https://trino.io/docs/current/installation/deployment.html#node-properties)
+    ├── jvm.config                  // <a href="https://trino.io/docs/current/installation/deployment.html#jvm-config">конфигурация jvm для trino</a>
+    └── node.properties             // <a href="https://trino.io/docs/current/installation/deployment.html#node-properties">конфигурация инстанса trino</a>
 </pre>
 
 Эмулятор BigQuery к сожалению [пока что](https://github.com/trinodb/trino/issues/25539) не поддерживается в trino.
