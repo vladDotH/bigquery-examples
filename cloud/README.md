@@ -12,7 +12,7 @@ https://cloud.google.com/bigquery/docs/sandbox?hl=en
 2. Инициализация gcloud-cli на локальной машине `gcloud init`
 3. (Опционально) Установка авторизации по умолчанию на локальной машине `gcloud auth application-default login` , в таком случае токен не понадобится
 
-Gcloud-cli также поставит BigQuery cli: `https://cloud.google.com/bigquery/docs/bq-command-line-tool`, 
+Gcloud-cli также поставит BigQuery cli: https://cloud.google.com/bigquery/docs/bq-command-line-tool , 
 через который можно обращаться к данным в проектах (он также работает с [эмулятором](../emulator/README.md)).
 
 ## Проект
