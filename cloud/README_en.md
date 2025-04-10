@@ -1,7 +1,7 @@
 # Working with BigQuery in Cloud
 
-## Начало работы
-First, Google Cloud will prompt you to enable the service and provide the necessary data:
+## Getting started
+Firstly, Google Cloud will ask you to enable the service and provide the necessary data:
 https://cloud.google.com/bigquery/docs/sandbox?hl=en
 
 
